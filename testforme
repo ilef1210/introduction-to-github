@@ -1,0 +1,58 @@
+import java.util.Scanner;
+class N_negative_Exception extends Exception{
+    public N_negative_Exception(){
+        super();
+    }
+}
+class DepassCapacite_Exception extends Exception{
+    public DepassCapacite_Exception(){
+        super();
+    }
+}
+public class Tableau {
+    static int[] T=new int[10];
+    static void loadT(int n){
+        Scanner s=new Scanner(System.in);
+        System.out.println("donner n:");
+        try{ n=s.nextInt();
+            if(n<=0) throw new N_negative_Exception();
+            if(n>=10) throw new DepassCapacite_Exception();
+            System.out.println("charg.de"+n+"entiers dabs T");
+            for(int i=0;i<n;i++) T[i]=i*10;}
+        catch (N_negative_Exception e){
+            System.out.println("n invalide");}
+        catch (DepassCapacite_Exception e){
+            System.out.println("\t load :attention madame!! pb de depassement de capacité du tab");
+
+        }
+
+    }
+    static void showT(int n){
+        int i;
+        try{
+            if(n<=0) throw new N_negative_Exception();
+            if(n>=10) throw new DepassCapacite_Exception();
+            System.out.println("affich.de"+n+"entiers dabs T");
+            for( i=0;i<n;i++) T[i]=i*10; System.out.println(T[i]);}
+        catch (N_negative_Exception e){
+            System.out.println("n invalide");}
+        catch(DepassCapacite_Exception e){
+            System.out.println("\t load :attention madame!! pb de depassement de capacité du tab");
+
+
+        }
+
+    }
+
+
+}
+public class TestForme {
+    public static void main(String[] args) {
+            Tableau.loadT(15);
+            Tableau.showT(3);
+            System.out.println("fin prog");
+
+
+
+    }
+}
